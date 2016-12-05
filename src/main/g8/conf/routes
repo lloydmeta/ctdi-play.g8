@@ -1,0 +1,3 @@
+GET /hello/:to   controllers.Greetings.hello(to: String)
+
+GET /sqrt/:num   controllers.Greetings.sqrt(num: Double)
