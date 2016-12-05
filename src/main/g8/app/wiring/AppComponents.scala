@@ -7,7 +7,8 @@ import controllers.Greetings
 
 import router.Routes
 
-class AppComponents(context: Context) extends BuiltInComponentsFromContext(context) {
+class AppComponents(context: Context)
+    extends BuiltInComponentsFromContext(context) {
 
   private implicit def as = actorSystem
 
