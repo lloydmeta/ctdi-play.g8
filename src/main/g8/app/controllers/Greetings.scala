@@ -16,7 +16,7 @@ class Greetings(implicit actorSystem: ActorSystem) extends Controller {
 
   // Essentially copied verbatim from the SIRD example
   def hello(to: String) = Action {
-    Ok(s"Hello $$to")
+    Ok(s"Hello \$to")
   }
 
   /*
