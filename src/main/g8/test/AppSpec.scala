@@ -10,17 +10,17 @@ class AppSpec
 
   private lazy val ws = components.wsClient
 
-  describe("/hello/$name") {
-    it("""should respond with "Hello $name"""") {
-      whenReady(ws.url(s"http://localhost:$port/hello/joe").get()) { r =>
+  describe("/hello/\$name") {
+    it("""should respond with "Hello \$name"""") {
+      whenReady(ws.url(s"http://localhost:\$port/hello/joe").get()) { r =>
         r.body shouldBe "Hello joe"
       }
     }
   }
 
-  describe("/sqrt/$num") {
+  describe("/sqrt/\$num") {
     it("""should respond with the proper square root""") {
-      whenReady(ws.url(s"http://localhost:$port/sqrt/9").get()) { r =>
+      whenReady(ws.url(s"http://localhost:\$port/sqrt/9").get()) { r =>
         r.body shouldBe "3.0"
       }
     }

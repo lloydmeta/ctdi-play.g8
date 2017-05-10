@@ -3,12 +3,13 @@ package wiring
 import play.api.ApplicationLoader.Context
 import play.api._
 import com.softwaremill.macwire._
-import controllers.Greetings
+import _root_.controllers.Greetings
 
 import router.Routes
 
 class AppComponents(context: Context)
-    extends BuiltInComponentsFromContext(context) {
+  extends BuiltInComponentsFromContext(context)
+    with NoHttpFiltersComponents {
 
   private implicit def as = actorSystem
 
@@ -16,7 +17,10 @@ class AppComponents(context: Context)
   private lazy val greetings = wire[Greetings]
 
   // Router
-  private lazy val routePrefix: String = "/"
-  lazy val router = wire[Routes]
+  lazy val router = {
+    val routePrefix: String = "/"
+    wire[Routes]
+  }
+
 
 }
