@@ -15,3 +15,5 @@ sbt new lloydmeta/ctdi-play.g8
 - Test harnesses adapted from [here](https://github.com/playframework/play-scala-compile-di-with-tests)
 - Basic integration tests
 - Scalafmt
+- Wartremover
+- Coursier for fetching dependencies
