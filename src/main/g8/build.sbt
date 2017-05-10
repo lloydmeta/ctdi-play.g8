@@ -20,12 +20,14 @@ scalacOptions ++= Seq(
   "-language:implicitConversions",
   "-unchecked",
   "-Xfatal-warnings",
-  "-Xlint",
+  "-Xlint:-unused,_",
   "-Yno-adapted-args",
   "-Ywarn-dead-code",
   "-Ywarn-numeric-widen",
   "-Ywarn-value-discard",
+  "-Ywarn-unused:-imports,_",
   "-Xfuture"
 )
 
 wartremoverErrors in (Compile, compile) ++= Warts.unsafe
+wartremoverExcluded ++= routes.in(Compile).value

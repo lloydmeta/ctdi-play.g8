@@ -1,7 +1,7 @@
 package controllers
 
 import akka.actor.ActorSystem
-import play.api.mvc.{Action, Controller}
+import play.api.mvc.{AbstractController, ControllerComponents}
 
 import scala.concurrent.Future
 
@@ -10,7 +10,8 @@ import scala.concurrent.Future
   *
   * Copyright 2016
   */
-class Greetings(implicit actorSystem: ActorSystem) extends Controller {
+class Greetings(controllerComponents: ControllerComponents)(implicit actorSystem: ActorSystem)
+  extends AbstractController(controllerComponents) {
 
   import actorSystem.dispatcher
 
