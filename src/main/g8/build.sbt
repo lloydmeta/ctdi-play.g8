@@ -4,7 +4,7 @@ version := "$version$"
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
-scalaVersion := "2.11.8"
+scalaVersion := "$scala_version$"
 
 libraryDependencies ++= Seq(
   "com.softwaremill.macwire" %% "macros" % "$macwire_version$" % Provided,
