@@ -28,4 +28,4 @@ scalacOptions ++= Seq(
   "-Xfuture"
 )
 
-reformatOnCompileSettings
+wartremoverErrors in (Compile, compile) ++= Warts.unsafe
