@@ -31,3 +31,5 @@ scalacOptions ++= Seq(
 
 wartremoverErrors in (Compile, compile) ++= Warts.unsafe
 wartremoverExcluded ++= routes.in(Compile).value
+
+scalafmtOnCompile := true
