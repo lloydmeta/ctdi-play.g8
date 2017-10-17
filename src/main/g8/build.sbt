@@ -64,7 +64,7 @@ scalacOptions in (Compile, console) ~= (_.filterNot(Set(
   "-Xfatal-warnings"
 )))
 
-scalacOptions in (Compile, test) ~= (_.filterNot(Set(
+scalacOptions in (Test, compile) ~= (_.filterNot(Set(
   "-Ywarn-unused:imports",
   "-Xfatal-warnings"
 )))
