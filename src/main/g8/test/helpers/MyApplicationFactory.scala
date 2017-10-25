@@ -6,17 +6,22 @@ import org.scalatestplus.play.FakeApplicationFactory
 import play.api._
 import play.api.inject._
 import play.core.DefaultWebCommands
-import wiring.{AppLoader, AppComponents}
+import wiring.AppComponents
+import play.api.ApplicationLoader.Context
 
 trait MyApplicationFactory extends FakeApplicationFactory {
 
-  private var _components: AppComponents = _
+  // Override this with something of your choosing that returns perhaps
+  // a subclass of AppComponents with a specific component overriden
+  def buildComponents(context: Context): AppComponents = new AppComponents(context)
+
+  private[this] var _components: AppComponents = _
 
   // accessed to get the components in tests
   final def components: AppComponents = _components
 
   override def fakeApplication: Application = {
-    val env = Environment.simple(new File("."))
+    val env           = Environment.simple(new File("."))
     val configuration = Configuration.load(env)
     val context = ApplicationLoader.Context(
       environment = env,
@@ -25,11 +30,9 @@ trait MyApplicationFactory extends FakeApplicationFactory {
       initialConfiguration = configuration,
       lifecycle = new DefaultApplicationLifecycle()
     )
-    val loader = new AppLoader()
-    // Order matters here
-    val application = loader.load(context)
-    _components = loader.components
-    application
+    val components = buildComponents(context)
+    _components = components
+    components.application
   }
 
 }

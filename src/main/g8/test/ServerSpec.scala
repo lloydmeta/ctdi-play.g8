@@ -3,7 +3,7 @@ import org.scalatest.{FunSpec, Matchers}
 import org.scalatest.concurrent.{IntegrationPatience, ScalaFutures}
 import org.scalatestplus.play._
 
-class AppSpec
+class ServerSpec
     extends FunSpec
     with BaseOneServerPerSuite
     with MyApplicationFactory
