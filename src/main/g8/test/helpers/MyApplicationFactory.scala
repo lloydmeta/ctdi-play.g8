@@ -5,7 +5,6 @@ import java.io.File
 import org.scalatestplus.play.FakeApplicationFactory
 import play.api._
 import play.api.inject._
-import play.core.DefaultWebCommands
 import wiring.AppComponents
 import play.api.ApplicationLoader.Context
 
@@ -25,9 +24,9 @@ trait MyApplicationFactory extends FakeApplicationFactory {
     val configuration = Configuration.load(env)
     val context = ApplicationLoader.Context(
       environment = env,
-      sourceMapper = None,
       initialConfiguration = configuration,
-      lifecycle = new DefaultApplicationLifecycle()
+      lifecycle = new DefaultApplicationLifecycle(),
+      devContext = None
     )
     val components = buildComponents(context)
     _components = components
