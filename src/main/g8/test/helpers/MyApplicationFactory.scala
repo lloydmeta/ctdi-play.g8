@@ -26,7 +26,6 @@ trait MyApplicationFactory extends FakeApplicationFactory {
     val context = ApplicationLoader.Context(
       environment = env,
       sourceMapper = None,
-      webCommands = new DefaultWebCommands(),
       initialConfiguration = configuration,
       lifecycle = new DefaultApplicationLifecycle()
     )
