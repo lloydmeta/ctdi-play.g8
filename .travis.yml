@@ -6,7 +6,7 @@ jdk:
   - oraclejdk8
 
 scala:
-  - 2.12.3
+  - 2.12.4
 
 script:
   - sbt new file://${TRAVIS_BUILD_DIR} --name=di-play-test
